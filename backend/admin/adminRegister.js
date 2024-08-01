@@ -1,4 +1,5 @@
 import Admin from "../models/admin.js";
+import bcrypt from "bcryptjs";
 
 const adminRegister = async (req, res) => {
   const { username, password } = req.body;

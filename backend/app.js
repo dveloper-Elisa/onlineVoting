@@ -5,11 +5,11 @@ import router from "./router/routes.js";
 dotenv.config();
 
 const app = express();
-app.use(router);
 
 const PORT = process.env.PORT || 3002;
 
 app.use(express.json());
+app.use(router);
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/voting-app")

@@ -1,5 +1,9 @@
 import Voter from "../models/voter.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+import dotenv from "dotenv";
+dotenv.config();
 
 // Voter Login
 const voterLogin = async (req, res) => {
@@ -20,9 +24,9 @@ const voterLogin = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.json({ token });
+    res.json({ voter, token });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error });
   }
 };
 

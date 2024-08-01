@@ -1,10 +1,16 @@
 import Candidate from "../models/candidate.js";
 
 const registerCandidate = async (req, res) => {
-  const { name, post } = req.body;
+  const { name, regNo, post } = req.body;
 
   try {
-    const newCandidate = new Candidate({ name, post });
+    const newCandidate = new Candidate({ name, regNo, post });
+
+    const isRegistered = await Candidate.findOne({ regNo });
+
+    if (isRegistered) {
+      return res.status(309).json({ message: "Candidate already registered" });
+    }
     await newCandidate.save();
     res.status(201).json({ message: "Candidate registered successfully" });
   } catch (error) {
