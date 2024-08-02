@@ -33,6 +33,9 @@ const Footer = () => {
           <a href="#" className=" hover:bg-white hover:text-black">
             <li>posts</li>
           </a>
+          <a href="/addcandidate" className=" hover:bg-white hover:text-black">
+            <li>Register candidate</li>
+          </a>
         </ol>
       </div>
     </div>
