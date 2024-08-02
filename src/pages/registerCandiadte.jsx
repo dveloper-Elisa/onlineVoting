@@ -56,7 +56,7 @@ const registerCandidate = () => {
                   return <option key={index}>{post}</option>;
                 })}
               </select>
-              <button className="bg-green-500 hover:bg-green-800 text-white font-bold p-2 rounded-md tracking-wide">
+              <button className="bg-green-500 hover:bg-teal-800 text-white font-bold p-2 rounded-md tracking-wide">
                 Register Candidate
               </button>
             </div>

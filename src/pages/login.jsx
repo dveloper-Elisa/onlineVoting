@@ -31,7 +31,7 @@ const Login = () => {
               placeholder="Enter password"
               className="p-2 border-green-800 border rounded-md"
             />
-            <button className="bg-green-500 hover:bg-green-800 text-white font-bold p-2 rounded-md tracking-wide">
+            <button className="bg-green-500 hover:bg-teal-800 text-white font-bold p-2 rounded-md tracking-wide">
               Login
             </button>
             <p>
