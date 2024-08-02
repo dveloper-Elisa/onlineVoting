@@ -1,0 +1,40 @@
+import React from "react";
+
+const Header = () => {
+  return (
+    <div className="flex flex-col gap-5 md:flex md:flex-row lg:flex lg:flex-row bg-green-800 p-2 items-center justify-between">
+      <div>
+        <img src="/RP_Log.png" alt="rpLogo" className="w-40 h-20" />
+      </div>
+      <nav>
+        <ol className="flex flex-row gap-5 capitalize font-bold text-white tracking-widest">
+          <a
+            href="#"
+            className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
+          >
+            <li>home</li>
+          </a>
+          <a
+            href="#"
+            className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
+          >
+            <li>candidate</li>
+          </a>
+          <a
+            href="#"
+            className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
+          >
+            <li>posts</li>
+          </a>
+        </ol>
+      </nav>
+      <div className="flex">
+        <button className="bg-green-500 border border-green-800 hover:bg-green-800 hover:border hover:border-white text-white font-bold p-2 rounded-md">
+          Logout
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
