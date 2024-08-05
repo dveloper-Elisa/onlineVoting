@@ -3,18 +3,34 @@ import React from "react";
 import Header from "../layout/header.jsx";
 import Footer from "../layout/footer.jsx";
 import Candidate from "../componet/candidates.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import connetion from "../api/APIlink.js";
+import axios from "axios";
 
 const CompetitionCandidate = () => {
   const navigation = useNavigate();
-
+  const [data, setData] = useState([]);
   useEffect(() => {
     const token = localStorage.getItem("yourKey");
     if (token === null || token === "undefined") {
       localStorage.clear("yourKey");
       navigation("/login");
     }
+
+    const getCandidate = async () => {
+      try {
+        const data = await axios.get(`${connetion}/candidates`);
+
+        if (data.status === 200) {
+          setData(data.data.candidates);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    getCandidate();
   }, []);
 
   const arra = [
@@ -54,13 +70,13 @@ const CompetitionCandidate = () => {
     <>
       <Header />
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 m-2">
-        {arra.map((data, index) => {
+        {data.map((candidate, index) => {
           return (
             <Candidate
-              src={data.src}
-              name={data.name}
-              post={data.post}
-              regNo={data.regNo}
+              src={candidate.src}
+              name={candidate.name}
+              post={candidate.post}
+              regNo={candidate.regNo}
               key={index}
             />
           );

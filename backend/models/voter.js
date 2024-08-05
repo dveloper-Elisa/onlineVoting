@@ -5,7 +5,7 @@ const voterSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   regNo: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  hasVoted: { type: Boolean, default: false },
+  votes: { type: Map, of: Boolean, default: {} },
 });
 
 const Voter = mongoose.model("Voter", voterSchema);
