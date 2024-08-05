@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login.jsx";
 import VoterSignup from "./pages/voterRegister.jsx";
 import CompetitionCandidate from "./pages/candidatesAll.jsx";
-import registerCandidate from "./pages/registerCandiadte.jsx";
+import RegisterCandidate from "./pages/registerCandiadte.jsx";
 import Dashboard from "./admin/admindashboard.jsx";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Route path="/login" Component={Login} />
         <Route path="/voter-signup" Component={VoterSignup} />
         <Route path="/candidates" Component={CompetitionCandidate} />
-        <Route path="/addcandidate" Component={registerCandidate} />
+        <Route path="/addcandidate" Component={RegisterCandidate} />
         <Route path="/admin-dashboard" Component={Dashboard} />
       </Routes>
     </BrowserRouter>

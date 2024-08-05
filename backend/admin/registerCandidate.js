@@ -4,15 +4,23 @@ const registerCandidate = async (req, res) => {
   const { name, regNo, post } = req.body;
 
   try {
-    const newCandidate = new Candidate({ name, regNo, post });
+    const newCandidate = new Candidate({
+      name,
+      regNo: regNo.toLowerCase(),
+      post,
+    });
 
-    const isRegistered = await Candidate.findOne({ regNo });
+    const isRegistered = await Candidate.findOne({
+      regNo: regNo.toLowerCase(),
+    });
 
     if (isRegistered) {
-      return res.status(309).json({ message: "Candidate already registered" });
+      return res.status(200).json({ message: "Candidate Exist" });
     }
     await newCandidate.save();
-    res.status(201).json({ message: "Candidate registered successfully" });
+    return res
+      .status(201)
+      .json({ message: "Candidate registered successfully" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

@@ -1,8 +1,49 @@
 import React from "react";
 import Header from "../admin/header.jsx";
 import Footer from "../admin/footer.jsx";
+import connection from "../api/APIlink.js";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const registerCandidate = () => {
+const RegisterCandidate = () => {
+  const [name, setName] = useState();
+  const [regNo, setRegNo] = useState();
+  const [post, setPost] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const navigation = useNavigate();
+  // useEffect(() => {
+  //   const token = localStorage.getItem("yourKey");
+  //   if (!token || token === "undefined") {
+  //     navigation("/login");
+  //   }
+  // }, []);
+
+  const handleRegister = async () => {
+    setLoading(true);
+
+    try {
+      const register = await axios.post(`${connection}/admin/candidate`, {
+        name,
+        regNo,
+        post,
+      });
+      if (register.status === 200) {
+        alert(register.data.message);
+        return;
+      }
+      if (register.status === 201) {
+        alert(register.data.message);
+        return;
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const posts = [
     "Guild prezident",
     "Vs.Guild President",
@@ -34,21 +75,27 @@ const registerCandidate = () => {
             <div className="flex flex-col gap-2">
               <input
                 type="text"
-                name=""
-                id=""
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
                 placeholder="Full names"
                 className="p-2 border-green-800 border rounded-md"
               />
               <input
                 type="text"
-                name=""
-                id=""
+                value={regNo}
+                onChange={(e) => {
+                  setRegNo(e.target.value);
+                }}
                 placeholder="RegNumber"
                 className="p-2 border-green-800 border rounded-md"
               />
               <select
-                name=""
-                id=""
+                value={post}
+                onChange={(e) => {
+                  setPost(e.target.value);
+                }}
                 className="p-2 border-green-800 border rounded-md"
               >
                 <option disabled>Select Post</option>
@@ -56,8 +103,12 @@ const registerCandidate = () => {
                   return <option key={index}>{post}</option>;
                 })}
               </select>
-              <button className="bg-green-500 hover:bg-teal-800 text-white font-bold p-2 rounded-md tracking-wide">
-                Register Candidate
+              <button
+                disabled={loading}
+                onClick={handleRegister}
+                className="bg-green-500 hover:bg-teal-800 text-white font-bold p-2 rounded-md tracking-wide"
+              >
+                {loading ? "Registering..." : "Register Candidate"}
               </button>
             </div>
           </div>
@@ -69,4 +120,4 @@ const registerCandidate = () => {
   );
 };
 
-export default registerCandidate;
+export default RegisterCandidate;
