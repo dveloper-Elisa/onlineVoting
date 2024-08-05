@@ -3,8 +3,20 @@ import React from "react";
 import Header from "../layout/header.jsx";
 import Footer from "../layout/footer.jsx";
 import Candidate from "../componet/candidates.jsx";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CompetitionCandidate = () => {
+  const navigation = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("yourKey");
+    if (token === null || token === "undefined") {
+      localStorage.clear("yourKey");
+      navigation("/login");
+    }
+  }, []);
+
   const arra = [
     {
       name: "kwizera Elisa",

@@ -7,8 +7,11 @@ import axios from "axios";
 const Login = () => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigate();
   const handleLogin = async () => {
+    setLoading(true);
+
     try {
       const login = await axios.post(`${connectionLink}/voter/login`, {
         email: userName,
@@ -23,7 +26,9 @@ const Login = () => {
         alert(login.data.message);
       }
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -45,8 +50,6 @@ const Login = () => {
           <div className="flex flex-col gap-2">
             <input
               type="text"
-              name=""
-              id=""
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Enter email"
@@ -54,8 +57,6 @@ const Login = () => {
             />
             <input
               type="password"
-              name=""
-              id=""
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -65,12 +66,13 @@ const Login = () => {
             />
             <button
               onClick={handleLogin}
+              disabled={loading}
               className="bg-green-500 hover:bg-teal-800 text-white font-bold p-2 rounded-md tracking-wide"
             >
-              Login
+              {loading ? "Loading..." : "Login"}
             </button>
             <p>
-              If have no account please register{" "}
+              If have no account please register
               <a
                 href="/voter-signup"
                 className="text-blue-800 hover:text-blue-500 "

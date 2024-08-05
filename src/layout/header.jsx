@@ -1,6 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigation = useNavigate();
+  const handleLogout = async () => {
+    try {
+      localStorage.clear("yourKey");
+      navigation("/login");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-5 md:flex md:flex-row lg:flex lg:flex-row bg-teal-800 p-2 items-center justify-between">
       <div className="flex flex-row items-center">
@@ -32,7 +43,10 @@ const Header = () => {
         </ol>
       </nav>
       <div className="flex">
-        <button className="bg-green-500 border border-green-800 hover:bg-teal-800 hover:border hover:border-white text-white font-bold p-2 rounded-md">
+        <button
+          onClick={handleLogout}
+          className="bg-green-500 border border-green-800 hover:bg-teal-800 hover:border hover:border-white text-white font-bold p-2 rounded-md"
+        >
           Logout
         </button>
       </div>
