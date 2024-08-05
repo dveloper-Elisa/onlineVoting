@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import connectionLink from "../api/APIlink.js";
 import axios from "axios";
 
-const Login = () => {
+const AdminLogin = () => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const [loading, setLoading] = useState(false);
@@ -13,16 +13,17 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const login = await axios.post(`${connectionLink}/voter/login`, {
-        email: userName,
+      const login = await axios.post(`${connectionLink}/admin/login`, {
+        username: userName,
         password: password,
       });
 
       if (login.status === 200) {
         alert(login.data.message);
-        localStorage.setItem("yourKey", login.data.token);
-        navigation("/candidates");
-      } else {
+        localStorage.setItem("AKey", login.data.token);
+        navigation("/admin-dashboard");
+      }
+      if (login.status === 201) {
         alert(login.data.message);
       }
     } catch (error) {
@@ -64,17 +65,17 @@ const Login = () => {
               placeholder="Enter password"
               className="p-2 border-green-800 border rounded-md"
             />
-            <button
-              onClick={handleLogin}
+            {/* <button
+              onClick={() => {
+                navigation("/login");
+              }}
               disabled={loading}
               className="bg-green-500 hover:bg-teal-800 text-white font-bold p-2 rounded-md tracking-wide"
             >
               {loading ? "Loading..." : "Login"}
-            </button>
+            </button> */}
             <button
-              onClick={() => {
-                navigation("/adminLogin");
-              }}
+              onClick={handleLogin}
               disabled={loading}
               className="bg-teal-800 hover:bg-teal-600 text-white font-bold p-2 rounded-md tracking-wide"
             >
@@ -96,4 +97,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;
