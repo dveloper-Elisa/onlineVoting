@@ -6,9 +6,10 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       localStorage.clear("yourKey");
+      localStorage.clear("voterId");
       navigation("/login");
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
   };
 

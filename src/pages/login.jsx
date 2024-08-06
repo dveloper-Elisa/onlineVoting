@@ -21,6 +21,7 @@ const Login = () => {
       if (login.status === 200) {
         alert(login.data.message);
         localStorage.setItem("yourKey", login.data.token);
+        localStorage.setItem("voterId", login.data.voter._id);
         navigation("/candidates");
       } else {
         alert(login.data.message);
@@ -67,7 +68,7 @@ const Login = () => {
             <button
               onClick={handleLogin}
               disabled={loading}
-              className="bg-green-500 hover:bg-teal-800 text-white font-bold p-2 rounded-md tracking-wide"
+              className="bg-green-500 hover:bg-teal-600 text-white font-bold p-2 rounded-md tracking-wide"
             >
               {loading ? "Loading..." : "Login"}
             </button>
@@ -78,7 +79,7 @@ const Login = () => {
               disabled={loading}
               className="bg-teal-800 hover:bg-teal-600 text-white font-bold p-2 rounded-md tracking-wide"
             >
-              {loading ? "Loading..." : "Admin"}
+              Admin
             </button>
             <p>
               If have no account please register

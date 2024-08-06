@@ -37,20 +37,20 @@ const vote = async (req, res) => {
   try {
     const voter = await Voter.findById(voterId);
     if (!voter) {
-      return res.status(400).json({ error: "Voter does not exist" });
+      return res.status(200).json({ message: "Voter does not exist" });
     }
 
     const candidate = await Candidate.findById(candidateId);
     if (!candidate) {
-      return res.status(400).json({ error: "Candidate does not exist" });
+      return res.status(200).json({ message: "Candidate does not exist" });
     }
 
     const post = candidate.post;
 
     if (voter.votes.get(post)) {
       return res
-        .status(400)
-        .json({ error: "Voter has already voted for this post" });
+        .status(200)
+        .json({ message: "Voter has already voted for this post" });
     }
 
     candidate.votes += 1;
@@ -59,9 +59,9 @@ const vote = async (req, res) => {
     await candidate.save();
     await voter.save();
 
-    res.json({ message: "Vote cast successfully" });
+    res.status(201).json({ message: "Vote cast successfully" });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 

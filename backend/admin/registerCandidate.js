@@ -2,12 +2,13 @@ import Candidate from "../models/candidate.js";
 
 const registerCandidate = async (req, res) => {
   const { name, regNo, post } = req.body;
-
+  const file = req.file;
   try {
     const newCandidate = new Candidate({
       name,
       regNo: regNo.toLowerCase(),
       post,
+      filePath: file.path,
     });
 
     const isRegistered = await Candidate.findOne({

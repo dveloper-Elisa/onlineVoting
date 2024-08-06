@@ -5,7 +5,7 @@ import Footer from "../layout/footer.jsx";
 import Candidate from "../componet/candidates.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import connetion from "../api/APIlink.js";
+import connection from "../api/APIlink.js";
 import axios from "axios";
 
 const CompetitionCandidate = () => {
@@ -20,9 +20,10 @@ const CompetitionCandidate = () => {
 
     const getCandidate = async () => {
       try {
-        const data = await axios.get(`${connetion}/candidates`);
+        const data = await axios.get(`${connection}/candidates`);
 
         if (data.status === 200) {
+          console.log(data.data.candidates);
           setData(data.data.candidates);
         }
       } catch (error) {
@@ -33,50 +34,18 @@ const CompetitionCandidate = () => {
     getCandidate();
   }, []);
 
-  const arra = [
-    {
-      name: "kwizera Elisa",
-      regNo: "21RP00159",
-      post: "Guild",
-      src: "/RP_LOGO.jpeg",
-    },
-    {
-      name: "Niyikiza Liliane",
-      regNo: "21RP04636",
-      post: "Securitary",
-      src: "/RP_LOGO.jpeg",
-    },
-    {
-      name: "Uwitondanishema muslim",
-      regNo: "21RP20309",
-      post: "Os murale",
-      src: "/RP_LOGO.jpeg",
-    },
-    {
-      name: "Elisabeth XXXXXX",
-      regNo: "21RP005723",
-      post: "protocal",
-      src: "/RP_LOGO.jpeg",
-    },
-    {
-      name: "Shikamusenge Philemon",
-      regNo: "21RP00029",
-      post: "Communication",
-      src: "/RP_LOGO.jpeg",
-    },
-  ];
-
   return (
     <>
       <Header />
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 m-2">
+      <div className="grid grid-cols-2 gap-5 md:grid-cols-4 lg:grid-cols-6 m-2">
         {data.map((candidate, index) => {
           return (
             <Candidate
-              src={candidate.src}
+              src={`${connection}/${candidate.filePath}`}
               name={candidate.name}
               post={candidate.post}
               regNo={candidate.regNo}
+              candidateId={candidate._id}
               key={index}
             />
           );
