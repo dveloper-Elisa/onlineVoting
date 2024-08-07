@@ -30,12 +30,12 @@ const Header = () => {
           >
             <li>candidates</li>
           </a>
-          <a
+          {/* <a
             href="#"
             className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
           >
             <li>posts</li>
-          </a>
+          </a> */}
           <a
             href="/addcandidate"
             className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
