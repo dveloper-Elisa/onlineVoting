@@ -11,7 +11,6 @@ const Dashboard = () => {
     const candidates = async () => {
       try {
         const allCandidates = await axios.get(`${connection}/candidates`);
-
         setCandidate(allCandidates.data.candidates);
       } catch (error) {
         alert(error.message);
@@ -29,9 +28,12 @@ const Dashboard = () => {
           <p className="font-bold underline underline-offset-8 py-5 md:text-[20px] lg:text-[2rem] px-2">
             ELECTION POSTS
           </p>
-          {candidate.map((post, index) => {
+          {candidate?.map((post, index) => {
             return (
-              <div className="hover:bg-white hover:text-black cursor-pointer p-5 font-bold tracking-wider">
+              <div
+                key={index}
+                className="hover:bg-white hover:text-black cursor-pointer p-5 font-bold tracking-wider"
+              >
                 {post.post}
               </div>
             );

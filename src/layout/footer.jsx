@@ -20,7 +20,7 @@ const Footer = () => {
           RP mis
         </a>
         <a
-          href="https://rp.ac.rw/"
+          href="https://www.rp.ac.rw/"
           className=" hover:bg-white hover:text-black"
         >
           Rwanda polytechnic

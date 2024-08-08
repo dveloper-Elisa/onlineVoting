@@ -22,7 +22,7 @@ const CompetitionCandidate = () => {
       try {
         const data = await axios.get(`${connection}/candidates`);
 
-        if (data.status === 200) {
+        if (data.status === 201) {
           setData(data.data.candidates);
         }
       } catch (error) {

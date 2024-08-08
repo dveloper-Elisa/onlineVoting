@@ -13,10 +13,16 @@ const Footer = () => {
       </div>
       <div className="flex flex-col gap-2">
         <strong className="border-b-2 text-center w-fit">Quick link</strong>
-        <a href="#" className=" hover:bg-white hover:text-black">
+        <a
+          href="https://www.mis.rp.ac.rw/"
+          className=" hover:bg-white hover:text-black"
+        >
           RP mis
         </a>
-        <a href="#" className=" hover:bg-white hover:text-black">
+        <a
+          href="https://rp.ac.rw/"
+          className=" hover:bg-white hover:text-black"
+        >
           Rwanda polytechnic
         </a>
       </div>
