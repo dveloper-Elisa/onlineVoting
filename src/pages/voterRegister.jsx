@@ -34,7 +34,7 @@ const VoterSignup = () => {
       });
       if (signup.status === 201) {
         alert(signup.data.message);
-        navigation("/login");
+        navigation("/");
       }
       if (signup.status === 200) {
         alert(signup.data.message);
@@ -118,7 +118,7 @@ const VoterSignup = () => {
             </button>
             <p>
               Already have accound please Login{" "}
-              <a href="/login" className="text-blue-800 hover:text-blue-500 ">
+              <a href="/" className="text-blue-800 hover:text-blue-500 ">
                 here
               </a>
             </p>

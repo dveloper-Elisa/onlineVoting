@@ -22,9 +22,10 @@ const CompetitionCandidate = () => {
       try {
         const data = await axios.get(`${connection}/candidates`);
 
-        if (data.status === 201) {
-          setData(data.data.candidates);
-        }
+        // if (data.status === 201) {
+        setData(data.data.candidates);
+        console.log(data.data.candidates);
+        // }
       } catch (error) {
         console.log(error.message);
       }
@@ -36,7 +37,7 @@ const CompetitionCandidate = () => {
   return (
     <>
       <Header />
-      <div className="grid grid-cols-2 gap-5 md:grid-cols-4 lg:grid-cols-6 m-2">
+      <div className="grid grid-cols-2 gap-5 pb-[7rem] md:grid-cols-4 lg:grid-cols-6 m-2">
         {data.map((candidate, index) => {
           return (
             <Candidate

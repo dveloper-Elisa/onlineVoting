@@ -3,8 +3,9 @@ import Header from "../admin/header.jsx";
 import Footer from "../admin/footer.jsx";
 import connection from "../api/APIlink.js";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import posts from "./post.js";
 
 const RegisterCandidate = () => {
   const [name, setName] = useState("");
@@ -14,12 +15,12 @@ const RegisterCandidate = () => {
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigate();
-  // useEffect(() => {
-  //   const token = localStorage.getItem("yourKey");
-  //   if (!token || token === "undefined") {
-  //     navigation("/login");
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("yourKey");
+    if (!token || token === "undefined") {
+      navigation("/");
+    }
+  }, []);
 
   const handleRegister = async () => {
     setLoading(true);
@@ -54,28 +55,6 @@ const RegisterCandidate = () => {
       setLoading(false);
     }
   };
-
-  const posts = [
-    "Guild President",
-    "Vice. Guild President",
-    "General Secretary",
-    "Advisor to executive Committee",
-    "Minister of Finance",
-    "Minister of Health & Social Welfare",
-    "Minister Sport",
-    "Minister Education",
-    "Minister of Culture & Associations",
-    "Minister of Gender & Protocal",
-    "Minister of Security & Information",
-    "Operation Commander",
-    "Presdent of board of speaker",
-    "Vice Presdent of board of speaker",
-    "Secretory of board of speaker",
-    "President of Arbitration",
-    "Vice President of Arbitration",
-    "Secretory of Arbitration",
-    "Advisor",
-  ];
 
   return (
     <>

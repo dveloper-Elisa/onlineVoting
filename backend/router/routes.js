@@ -7,6 +7,7 @@ import adminRegister from "../admin/adminRegister.js";
 import adminLogin from "../admin/adminLogin.js";
 import registerCandidate from "../admin/registerCandidate.js";
 import getAllCandidates from "../candidate/selectCandidate.js";
+import getCandidates from "../candidate/getCandidates.js";
 
 const router = new Router();
 
@@ -20,7 +21,8 @@ router.post("/admin/register", adminRegister);
 router.post("/admin/login", adminLogin);
 
 // select Candidates
-router.get("/candidates", getAllCandidates);
+router.post("/candidates", getAllCandidates);
+router.get("/candidates", getCandidates);
 
 // exporting router
 export default router;

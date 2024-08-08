@@ -5,7 +5,7 @@ const Header = () => {
   const navigation = useNavigate();
   const logout = () => {
     localStorage.clear("yourKey");
-    navigation("/login");
+    navigation("/");
   };
 
   return (
