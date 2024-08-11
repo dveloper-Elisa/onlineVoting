@@ -16,7 +16,7 @@ const RegisterCandidate = () => {
 
   const navigation = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("yourKey");
+    const token = localStorage.getItem("AKey");
     if (!token || token === "undefined") {
       navigation("/");
     }
@@ -47,6 +47,7 @@ const RegisterCandidate = () => {
       );
       if (register.status === 200 || register.status === 201) {
         alert(register.data.message);
+        navigation("/admin-dashboard");
         return;
       }
     } catch (error) {

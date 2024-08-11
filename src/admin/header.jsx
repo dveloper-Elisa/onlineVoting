@@ -9,41 +9,17 @@ const Header = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 md:flex md:flex-row lg:flex lg:flex-row bg-teal-800 p-2 items-center justify-between">
+    <div className="flex flex-row gap-5 md:flex md:flex-row lg:flex lg:flex-row bg-teal-800 p-2 items-center justify-between">
       <div className="flex flex-row items-center">
-        <img src="/RP_Log.png" alt="rpLogo" className="w-30 h-20" />
-        <p className="md:text-[20px] lg:text-[2rem] text-white font-bold tracking-wider">
+        <img
+          src="/RP_Log.png"
+          alt="rpLogo"
+          className="w-20 h-10 md:w-30 md:h-20 lg:w-40 lg:h-30"
+        />
+        <p className="md:text-[20px] lg:text-[2rem] text-[10px] text-white font-bold tracking-wider">
           IPRC NGOMA SU SMART VOTING
         </p>
       </div>
-      <nav>
-        <ol className="flex flex-row gap-5 capitalize font-bold text-white tracking-widest">
-          <a
-            href="#"
-            className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
-          >
-            <li>home</li>
-          </a>
-          <a
-            href="/candidates"
-            className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
-          >
-            <li>candidates</li>
-          </a>
-          {/* <a
-            href="#"
-            className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
-          >
-            <li>posts</li>
-          </a> */}
-          <a
-            href="/addcandidate"
-            className=" hover:bg-green-500 bg-green-700 p-2 rounded-md"
-          >
-            <li>Add candidate</li>
-          </a>
-        </ol>
-      </nav>
       <div className="flex">
         <button
           onClick={logout}
