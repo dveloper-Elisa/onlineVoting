@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const navigation = useNavigate();
-  const [candidates, setCandidate] = useState();
+  const [candidate, setCandidate] = useState();
   const [votes, setVotes] = useState();
   const [position, setPosition] = useState();
   useEffect(() => {
-    const token = localStorage.getItem("yourKey");
-    if (token == null || token == "undefined") {
+    const token = localStorage.getItem("AKey");
+    if (!token || token == "undefined") {
       navigation("/");
     }
 
@@ -36,6 +36,7 @@ const Dashboard = () => {
         post: posts,
       });
       setVotes(voted.data.candidates);
+      console.log(voted.data.candidates);
     } catch (error) {
       alert(error.message);
     }
@@ -103,6 +104,70 @@ const Dashboard = () => {
                   </div>
                 );
               })}
+            </div>
+
+            <div>
+              <div>
+                {votes?.reduce(
+                  (max, vote) => (vote.votes > max.votes ? vote : max),
+                  votes[0]
+                ) && (
+                  <div className="flex gap-3 items-center bg-green-500 rounded-md p-2">
+                    <div className="flex flex-wrap">
+                      <img
+                        src={`${connection}/${
+                          votes.reduce(
+                            (max, vote) =>
+                              vote.votes > max.votes ? vote : max,
+                            votes[0]
+                          ).filePath
+                        }`}
+                        alt={
+                          votes.reduce(
+                            (max, vote) =>
+                              vote.votes > max.votes ? vote : max,
+                            votes[0]
+                          ).name
+                        }
+                        className="w-24 h-24 rounded-full"
+                      />
+                    </div>
+
+                    <div className="flex flex-col">
+                      <p className="flex ">
+                        <span className="font-bold">Candidate Name: </span>
+                        {
+                          votes.reduce(
+                            (max, vote) =>
+                              vote.votes > max.votes ? vote : max,
+                            votes[0]
+                          ).name
+                        }
+                      </p>
+                      <p className="flex ">
+                        <span className="font-bold">Candidate RegNumber: </span>
+                        {
+                          votes.reduce(
+                            (max, vote) =>
+                              vote.votes > max.votes ? vote : max,
+                            votes[0]
+                          ).regNo
+                        }
+                      </p>
+                      <p className="flex ">
+                        <span className="font-bold">Total Votes: </span>
+                        {
+                          votes.reduce(
+                            (max, vote) =>
+                              vote.votes > max.votes ? vote : max,
+                            votes[0]
+                          ).votes
+                        }
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
