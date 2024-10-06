@@ -40,13 +40,13 @@ const AdminLogin = () => {
           <img
             src="/RP_Log.png"
             alt="RP LOGO"
-            className="w-20 h-20 rounded-full"
+            className="w-32 h-32 rounded-full"
           />
         </div>
 
         <div className="flex flex-col gap-5 ">
           <p className="font-bold tracking-wider text-[1.5rem]">
-            Voting Login System
+            Admin Login page
           </p>
           <div className="flex flex-col gap-2">
             <input
@@ -79,16 +79,12 @@ const AdminLogin = () => {
               disabled={loading}
               className="bg-teal-800 hover:bg-teal-600 text-white font-bold p-2 rounded-md tracking-wide"
             >
-              {loading ? "Loading..." : "Admin"}
+              {loading ? "Loading..." : "Login"}
             </button>
-            <p>
-              If have no account please register
-              <a
-                href="/voter-signup"
-                className="text-blue-800 hover:text-blue-500 "
-              >
-                here
-              </a>
+            <p onClick={()=>{
+              navigation("/")
+            }} className="hover:cursor-pointer hover:w-fit hover:bg-teal-500 text-blue-500 font-bold p-2 tracking-wide">
+              {"<= back"}
             </p>
           </div>
         </div>

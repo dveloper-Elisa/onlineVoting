@@ -20,13 +20,19 @@ const Header = () => {
           IPRC NGOMA SU SMART VOTING
         </p>
       </div>
-      <div className="flex">
-        <button
+      <div className="flex items-center justify-between gap-5">
+        <a
+          href="/candidates"
+          className="bg-green-500 border border-green-800 hover:bg-teal-800 hover:border hover:border-white text-center text-white font-bold p-2 rounded-md"
+        >
+          Candidates
+        </a>
+        <p
           onClick={logout}
-          className="bg-green-500 border border-green-800 hover:bg-teal-800 hover:border hover:border-white text-white font-bold p-2 rounded-md"
+          className="bg-green-500 border border-green-800 hover:bg-teal-800 hover:border hover:border-white w-fit text-white font-bold p-2 rounded-md"
         >
           Logout
-        </button>
+        </p>
       </div>
     </div>
   );

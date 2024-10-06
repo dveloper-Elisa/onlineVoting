@@ -5,10 +5,12 @@ import connection from "../api/APIlink.js";
 import posts from "../pages/post.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Report from "./generateReport.jsx";
 
 const Dashboard = () => {
   const navigation = useNavigate();
   const [candidate, setCandidate] = useState();
+  const [report, setReport] = useState(true);
   const [votes, setVotes] = useState();
   const [position, setPosition] = useState();
   const [isResponsiveVisible, setIsResponsiveVisible] = useState(false); // State to manage the visibility of the responsive div
@@ -79,6 +81,7 @@ const Dashboard = () => {
               onClick={() => {
                 votePost(post);
                 setPosition(post);
+                setReport(false)
                 {
                   isResponsiveVisible
                     ? setIsResponsiveVisible(!isResponsiveVisible)
@@ -98,6 +101,10 @@ const Dashboard = () => {
             <p className="font-bold">
               Position: {position ? position : "positions of the candidate"}
             </p>
+            <>
+            {report ? <Report /> :""}
+            
+            </>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols4">
               {votes?.map((cdnt, index) => (
                 <div

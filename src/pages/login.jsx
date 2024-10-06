@@ -82,7 +82,7 @@ const Login = () => {
               Admin
             </button>
             <p>
-              If have no account please register
+              If have no account please register{" "}
               <a
                 href="/voter-signup"
                 className="text-blue-800 hover:text-blue-500 "

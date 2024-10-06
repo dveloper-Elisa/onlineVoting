@@ -7,6 +7,7 @@ import RegisterCandidate from "./pages/registerCandiadte.jsx";
 import Dashboard from "./admin/admindashboard.jsx";
 import AdminLogin from "./admin/adminLogin.jsx";
 import NotFound from "./pages/notFound.jsx";
+import Report from "./admin/generateReport.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/candidates" Component={CompetitionCandidate} />
         <Route path="/addcandidate" Component={RegisterCandidate} />
         <Route path="/admin-dashboard" Component={Dashboard} />
+        <Route path="/report" Component={Report} />
         <Route path="/*" Component={NotFound} />
       </Routes>
     </BrowserRouter>

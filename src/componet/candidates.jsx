@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import connection from "../api/APIlink.js";
 const Candidate = ({ src, post, name, regNo, candidateId }) => {
   const [loading, setLoading] = useState(false);
+  const [admin, setAdmin] = useState(true);
+  useEffect(()=>{
+    const token = localStorage.getItem("AKey");
+    if(token != null || !token === "undefined"){
+      setAdmin(false)
+    }
+  },[])
 
   const voteCandidate = async () => {
     setLoading(true);
@@ -50,12 +57,12 @@ const Candidate = ({ src, post, name, regNo, candidateId }) => {
             <p>
               <span className="font-bold"> post:</span> {post}
             </p>
-            <button
+            {admin ? <button
               onClick={voteCandidate}
               className="bg-teal-800 hover:bg-teal-500 font-bold text-white tracking-wider py-1 rounded-md"
             >
               {loading ? "voting..." : "Vote"}
-            </button>
+            </button>:""}
           </div>
         </div>
       </div>
